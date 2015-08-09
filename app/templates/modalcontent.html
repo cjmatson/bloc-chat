@@ -1,0 +1,7 @@
+<div>
+	<h2 id="createNewRoomHeader">Create New Room</h2>
+		<p id="enterRoomName">Enter Room Name</p>
+		<input ng-model="room.name" type="text" id="modalInput" ng-keydown="returnRoom($event)">
+		<button id="createRoomButton" ng-click="createRoom()">Create Room</button>
+		<button id="cancelRoomAdd" ng-click="cancel()">Cancel</button>
+</div>

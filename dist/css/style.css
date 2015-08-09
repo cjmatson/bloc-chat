@@ -1,0 +1,109 @@
+html {
+  height: 100%; }
+
+body {
+  background-color: #005083; }
+
+#chatRoomHeader {
+  font-family: "Lucida Console";
+  color: #C4CED3;
+  text-shadow: 0.5px 0.5px #061922; }
+
+#chatRooms {
+  font-family: "Lucida Console";
+  color: #C4CED3;
+  list-style-type: none;
+  text-shadow: 0.5px 0.5px #061922;
+  font-size: 15px; }
+
+#navbar {
+  text-align: center;
+  background-color: #061922;
+  line-height: 60px;
+  color: #005083;
+  font-weight: 400;
+  font-size: 50px;
+  font-family: "Lucida Console";
+  border-style: outset;
+  text-shadow: 2px 2px #C4CED3;
+  border-color: #C4CED3;
+  letter-spacing: 6px;
+  position: relative; }
+
+#chatRoomButtons {
+  background-color: #061922;
+  color: #005083;
+  font-family: "Lucida Console";
+  text-shadow: 0.5px 0.5px #C4CED3;
+  border-style: outset;
+  border-color: #C4CED3;
+  margin-top: 0px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 15px; }
+
+#addButton {
+  background-color: #061922;
+  color: #005083;
+  font-family: "Lucida Console";
+  text-shadow: 0.5px 0.5px #C4CED3;
+  border-style: outset;
+  border-color: #C4CED3;
+  margin-left: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 5px; }
+
+.modal {
+  display: block;
+  width: 300px;
+  height: 190px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -150px;
+  margin-bottom: -150px;
+  background: #C4CED3; }
+
+#createNewRoomHeader {
+  font-family: "Lucida Console";
+  text-align: center;
+  color: #061922;
+  text-shadow: 0.5px 0.5px #005083; }
+
+#enterRoomName {
+  font-family: "Lucida Console";
+  text-shadow: 0.5px 0.5px #005083;
+  color: #061922;
+  margin-left: 10px; }
+
+#createRoomButton {
+  background-color: #061922;
+  color: #005083;
+  font-family: "Lucida Console";
+  text-shadow: 0.5px 0.5px #C4CED3;
+  border-style: outset;
+  border-color: #C4CED3;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 15px; }
+
+#cancelRoomAdd {
+  background-color: #061922;
+  color: #005083;
+  font-family: "Lucida Console";
+  text-shadow: 0.5px 0.5px #C4CED3;
+  border-style: outset;
+  border-color: #C4CED3;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 15px; }
+
+#modalInput {
+  margin-left: 10px; }
