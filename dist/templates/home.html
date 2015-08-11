@@ -1,1 +1,6 @@
-<h1>Home Page</h1>
+<div class="chat-room-container">
+<h2 id="chatRoomHeader">Chat Rooms<button id="addButton" ng-click="open()">Add Chat Room</button></h2> 
+<ui>
+	<li id="chatRooms" ng-repeat="room in rooms | orderBy: 'name'" ><button id ="chatRoomButtons">{{room.name}}</button></li>
+</ui>
+</div>
