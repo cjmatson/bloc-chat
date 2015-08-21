@@ -42,7 +42,7 @@ body {
 	border-style: outset;
 	border-color: #C4CED3;
 	margin-top: 0px;
-	margin-left: 10px;
+	margin-left: -25px;
 	margin-bottom: 10px;
 	cursor: pointer;
 	font-size: 15px;
@@ -118,4 +118,20 @@ body {
 
 #modalInput {
 	margin-left: 10px;
+}
+
+#messages-container {
+   	text-align: center;
+   	font-family: "Lucida Console";
+	color: #C4CED3;
+	text-shadow: 0.5px 0.5px #061922;
+	margin-top: -180px;
+}
+
+#activeRoomMessages {
+	margin-left: 200px;
+	font-family: "Lucida Console";
+	color: #C4CED3;
+	text-shadow: 0.5px 0.5px #061922;
+	font-size: 15px;
 }

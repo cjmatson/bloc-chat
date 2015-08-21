@@ -7,15 +7,10 @@ blocChat.config(['$stateProvider', '$locationProvider', function($stateProvider,
 		templateUrl: '/templates/home.html'
 	});
 }])
-
-blocChat.controller('Home.controller', ['$scope', 'Room', '$rootScope', '$modal', function($scope, Room, $rootScope, $modal) {
-	$scope.animationsEnabled = true;
-	$scope.toggleAnimations = function() {
-		$scope.animationsEnabled = !$scope.animationsEnabled;
-	}
+blocChat.controller('Home.controller', ['$scope', 'Room', '$modal', function($scope, Room, $modal) {
+	$scope.rooms = Room.all;
 	$scope.open = function(size) {
 		var modalInstance = $modal.open({
-		animation: $scope.animationsEnabled,
 		size: size,
 		scope: $scope,
 		replace: true,
@@ -24,33 +19,39 @@ blocChat.controller('Home.controller', ['$scope', 'Room', '$rootScope', '$modal'
 		windowClass: 'modal fade in'
 		});
 	}
+	$scope.activeChatRoom = false;
+	$scope.selectChatRoom = function(room, id) {
+		$scope.selectedChatRoom = room.name;
+		$scope.activeChatRoom = true;
+		$scope.messages = Room.messages(id);
+	}
 }])
 
-blocChat.controller('ModalContent.controller', ['$scope', 'Room', '$rootScope', '$modalInstance', function($scope, Room, $rootScope, $modalInstance) {
+blocChat.controller('ModalContent.controller', ['$scope', 'Room', '$modalInstance', function($scope, Room, $modalInstance) {
+	$scope.room = {};
 	$scope.cancel = function() {
 		$modalInstance.dismiss('cancel');
 	}
 	$scope.createRoom = function() {
-		if ($rootScope.room) {
-			$rootScope.rooms.$add($rootScope.room);
-			$modalInstance.close();
-		}
-	}
-	$scope.returnRoom = function($event) {
-		if($rootScope.room && $event.keyCode === 13) {
-			$rootScope.rooms.$add($rootScope.room);
-			$modalInstance.close();
+		if ($scope.room.name) {
+		Room.create($scope.room);
+		$modalInstance.close();
 		}
 	}
 }])
 
-blocChat.factory('Room', ['$firebase', '$rootScope', function($firebase, $rootScope) {
+blocChat.factory('Room', ['$firebaseArray', function($firebaseArray) {
 	var ref = new Firebase ("https://screaming-wind-7497.firebaseio.com/");
-	$rootScope.data = $firebase(ref);
-	$rootScope.rooms = $rootScope.data.$asArray();
-	$rootScope.room = {name: $rootScope.room};
+	var rooms = $firebaseArray(ref.child('rooms'));
 	return {
-		all: $rootScope.rooms
-	}
+		all: rooms,
+		create: function(newRoom) {
+			rooms.$add(newRoom);
+		},
+		messages: function(roomId) {
+			var messagesRef = new Firebase ("https://screaming-wind-7497.firebaseio.com/messages")
+			return $firebaseArray(messagesRef.orderByChild('roomId').equalTo(roomId));
+		}
+	}	
 }])
 
