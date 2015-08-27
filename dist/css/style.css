@@ -121,3 +121,31 @@ body {
   color: #C4CED3;
   text-shadow: 0.5px 0.5px #061922;
   font-size: 15px; }
+
+#usernameHeader {
+  font-family: "Lucida Console";
+  text-align: center;
+  color: #061922;
+  text-shadow: 0.5px 0.5px #005083; }
+
+#enterUsername {
+  font-family: "Lucida Console";
+  text-shadow: 0.5px 0.5px #005083;
+  color: #061922;
+  margin-left: 10px; }
+
+#clickUsernameButton {
+  background-color: #061922;
+  color: #005083;
+  font-family: "Lucida Console";
+  text-shadow: 0.5px 0.5px #C4CED3;
+  border-style: outset;
+  border-color: #C4CED3;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 15px; }
+
+#modalUsernameEntry {
+  margin-left: 10px; }
