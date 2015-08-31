@@ -118,6 +118,8 @@ body {
 
 #modalInput {
 	margin-left: 10px;
+	font-family: "Lucida Console";
+	text-shadow: 0.5px 0.5px #C4CED3;
 }
 
 #messages-container {
@@ -129,11 +131,12 @@ body {
 }
 
 #activeRoomMessages {
-	margin-left: 200px;
+	text-align: center;
 	font-family: "Lucida Console";
 	color: #C4CED3;
 	text-shadow: 0.5px 0.5px #061922;
 	font-size: 15px;
+	list-style-type: none;
 }
 
 #usernameHeader {
@@ -166,4 +169,13 @@ body {
 
 #modalUsernameEntry {
 	margin-left: 10px;
+	font-family: "Lucida Console";
+	text-shadow: 0.5px 0.5px #C4CED3;
 }
+
+#messagesInput {
+	color: #061922;
+	font-family: "Lucida Console";
+	text-shadow: 0.5px 0.5px #C4CED3;
+}
+

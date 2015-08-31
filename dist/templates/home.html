@@ -1,11 +1,12 @@
 <h2 id="chatRoomHeader">Chat Rooms<button id="addButton" ng-click="open()">Add Chat Room</button></h2> 
 <ul>
-	<li id="chatRooms" ng-repeat="room in rooms | orderBy: 'name'"><button id ="chatRoomButtons" ng-click="selectChatRoom(room,room.$id)">{{room.name}}</button></li>
+	<li id="chatRooms" ng-repeat="room in rooms | orderBy: 'name'"><button id ="chatRoomButtons" ng-click="selectChatRoom(room)">{{room.name}}</button></li>
 </ul>
 <div id="messages-container" ng-show="activeChatRoom"> 
-	<h2>{{selectedChatRoom}}</h2>
+	<h2>{{selectedChatRoom.name}}</h2>
 	<ul> 
 		<li id="activeRoomMessages" ng-repeat ="message in messages"> {{message.content}} 
 		</li> 
 	</ul> 
+	<input ng-model="newMessage" type="text" id="messagesInput" placeholder="Type Message Here..."><button id="sendMessageButton" ng-click="sendMessage()">Send</button>  
 </div> 
