@@ -76,6 +76,9 @@ blocChat.controller('ModalContent.controller', ['$scope', 'Room', '$modalInstanc
 		$modalInstance.close();
 		$scope.room.name = "";
 		}
+		else {
+			alert("Invalid room name. Please re-enter room name.")
+		}
 	}
 }])
 
