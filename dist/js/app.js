@@ -74,6 +74,7 @@ blocChat.controller('ModalContent.controller', ['$scope', 'Room', '$modalInstanc
 		if ($scope.room.name) {
 		Room.create($scope.room);
 		$modalInstance.close();
+		$scope.room.name = "";
 		}
 	}
 }])
