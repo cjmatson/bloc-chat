@@ -52,10 +52,11 @@ blocChat.controller('Home.controller', ['$scope', 'Room', 'Message', '$modal', '
 		$scope.activeChatRoom = true;
 		$scope.messages = Room.messages($scope.selectedChatRoom.$id);
 	}
-	var time = new Date();
 	$scope.sendMessage = function () {
+		var time = new Date();
+		var currentTime = time.toLocaleString()
 		if ($scope.newMessage) {
-			$scope.message = {username: $cookies.get("currentUser"), sentAt: time.toJSON(), roomId: $scope.selectedChatRoom.$id, content: $scope.newMessage};
+			$scope.message = {username: $cookies.get("currentUser"), sentAt: currentTime, roomId: $scope.selectedChatRoom.$id, content: $scope.newMessage};
 			Message.send($scope.message);
 			$scope.newMessage = "";
 		}

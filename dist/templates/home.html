@@ -5,7 +5,10 @@
 <div id="messages-container" ng-show="activeChatRoom"> 
 	<h2>{{selectedChatRoom.name}}</h2>
 	<ul> 
-		<li id="activeRoomMessages" ng-repeat ="message in messages"> {{message.content}} 
+		<li id="activeRoomMessages" ng-repeat ="message in messages"> 
+			<div class="col-md-4">{{message.username}}</div>
+			<div class="col-md-4">{{message.content}}</div>
+			<div class="col-md-4">{{message.sentAt}}</div>
 		</li> 
 	</ul> 
 	<input ng-model="newMessage" type="text" id="messagesInput" placeholder="Type Message Here..."><button id="sendMessageButton" ng-click="sendMessage()">Send</button>  
