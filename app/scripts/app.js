@@ -1,4 +1,6 @@
+// Establishes BlocChat application module
 var blocChat = angular.module('BlocChat', ['ui.router', 'firebase', 'ui.bootstrap', 'ngCookies']);
+// Configuration for BlocChat's home state
 blocChat.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
 	$locationProvider.html5Mode({ enabled: true, requireBase: false });
 	$stateProvider.state('home', {
@@ -7,7 +9,7 @@ blocChat.config(['$stateProvider', '$locationProvider', function($stateProvider,
 		templateUrl: '/templates/home.html'
 	});
 }])
-
+//As soon as a user enters BlocChat, a modal will appear 
 blocChat.run(['$modal', '$cookies', function ($modal, $cookies) {
 	if (!$cookies.currentUser || $cookies.currentUser === "") {
 		$modal.open({
@@ -19,7 +21,7 @@ blocChat.run(['$modal', '$cookies', function ($modal, $cookies) {
 		})
 	}
 }])
-
+// Modal controller prompting user to enter username before entering BlocChat
 blocChat.controller('ModalCurrentUser.controller', ['$scope', '$modalInstance', '$cookies', function ($scope, $modalInstance, $cookies) {
 	$scope.currentUser = {};
 	$scope.enterUsernameButton = function () {
@@ -32,7 +34,7 @@ blocChat.controller('ModalCurrentUser.controller', ['$scope', '$modalInstance', 
 		}
 	}
 }])
-
+//Controller for the home page. The 'create room' button will prompt a modal when clicked
 blocChat.controller('Home.controller', ['$scope', 'Room', 'Message', '$modal', '$cookies', function ($scope, Room, Message, $modal, $cookies) {
 	$scope.rooms = Room.all;
 	$scope.open = function (size) {
@@ -46,12 +48,14 @@ blocChat.controller('Home.controller', ['$scope', 'Room', 'Message', '$modal', '
 		backdrop: 'static'
 		});
 	}
+	//Selecting a chat room listed on the left side of the application
 	$scope.activeChatRoom = false;
 	$scope.selectChatRoom = function (room) {
 		$scope.selectedChatRoom = room;
 		$scope.activeChatRoom = true;
 		$scope.messages = Room.messages($scope.selectedChatRoom.$id);
 	}
+	//Sending and displaying chat room messages
 	$scope.sendMessage = function () {
 		var time = new Date();
 		var currentTime = time.toLocaleString()
@@ -65,7 +69,7 @@ blocChat.controller('Home.controller', ['$scope', 'Room', 'Message', '$modal', '
 		}
 	}
 }])
-
+//Modal controller prompting user to enter a chat room name when it clicks on the 'create room' button
 blocChat.controller('ModalContent.controller', ['$scope', 'Room', '$modalInstance', function ($scope, Room, $modalInstance) {
 	$scope.room = {};
 	$scope.cancel = function () {
@@ -82,7 +86,7 @@ blocChat.controller('ModalContent.controller', ['$scope', 'Room', '$modalInstanc
 		}
 	}
 }])
-
+//Service syncing rooms' data to Firebase
 blocChat.factory('Room', ['$firebaseArray', function ($firebaseArray) {
 	var ref = new Firebase ("https://screaming-wind-7497.firebaseio.com/");
 	var rooms = $firebaseArray(ref.child('rooms'));
@@ -97,7 +101,7 @@ blocChat.factory('Room', ['$firebaseArray', function ($firebaseArray) {
 		}
 	}	
 }])
-
+//Service syncing messages' data to Firebase
 blocChat.factory('Message', ['$firebaseArray', function ($firebaseArray) {
 	var ref = new Firebase ("https://screaming-wind-7497.firebaseio.com");
 	var messages = $firebaseArray(ref.child('messages'));
